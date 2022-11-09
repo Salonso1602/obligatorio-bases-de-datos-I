@@ -1,0 +1,13 @@
+.headers{
+    background-color: rgba(0, 139, 139, 0.50);
+}
+.values{
+    background-color: aliceblue;
+}
+.row{
+    text-align: center;
+}
+button{
+    width: 100%;
+    height: 100%;
+}
