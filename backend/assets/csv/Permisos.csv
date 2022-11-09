@@ -1,0 +1,4 @@
+﻿user_id,app_id,rol_neg_id,fecha_solicitud,fecha_autorizacion_estado
+11111111,1,1,2022-11-08,2022-11-09,AUTORIZADO
+22222222,2,2,2022-11-08,2022-11-09,DENEGADO
+33333333,1,1,2022-11-08,2022-11-09,AUTORIZADO
