@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
         if (err) throw err;
         return result;
     });
-
+    
     res.send(queryResult);
 });
 
