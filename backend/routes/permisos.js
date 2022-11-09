@@ -8,7 +8,8 @@ router.get('/', function(req, res, next) {
     const sqlQuery = 'SELECT * FROM Faculties';
 
     queryResult = db.database.query(sqlQuery, (err, result) => {
-    if (err) throw err;
+        if (err) throw err;
+        return result;
     });
 
     res.send(queryResult);
