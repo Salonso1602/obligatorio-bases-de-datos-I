@@ -15,9 +15,8 @@ CREATE TABLE APLICATIVOS(
 
 CREATE TABLE APLICATIVOS_MENU(
     app_id int,
-    menu_id int not null auto_increment;
+    menu_id int not null auto_increment PRIMARY KEY,
     descripcion_menu varchar(255),
-    PRIMARY KEY (app_id,menu_id),
     FOREIGN KEY (app_id) references APLICATIVOS(app_id)
 );
 
@@ -61,10 +60,10 @@ CREATE TABLE PERSONAS(
     hashpwd varchar(100)
 );
 
-CREATE PERSONAS_PREGUNTAS(
+CREATE TABLE PERSONAS_PREGUNTAS(
     user_id varchar(9),
     preg_id int,
-    respuesta varchar(100)
+    respuesta varchar(100),
 
     FOREIGN KEY (user_id) references PERSONAS(user_id),
     FOREIGN KEY (preg_id) references PREGUNTAS(preg_id)

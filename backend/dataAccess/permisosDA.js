@@ -3,9 +3,9 @@ const pool = db.pool;
 
 async function getAll() {
     try{
-        const response = await pool.query(`SELECT * FROM Faculties`);
-        console.log(response);
-        return response[0];
+        const queryResult = await pool.query(`SELECT * FROM PERMISOS`);
+        console.log(queryResult);
+        return queryResult[0];
     } 
     catch (err) {
         console.error(err);
