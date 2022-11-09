@@ -32,9 +32,11 @@ CREATE TABLE ROLES_APLICATIVOS(
 CREATE TABLE ROLES_APLICATIVOS_MENU(
     app_id int,
     rol_id int,
-    menu_id int
+    menu_id int,
 
-    
+    FOREIGN KEY (app_id) references APLICATIVOS(app_id),
+    FOREIGN KEY (rol_id) references ROLES_APLICATIVOS(rol_id),
+    FOREIGN KEY (menu_id) references APLICATIVOS_MENU(menu_id)
 
 );
 
@@ -42,6 +44,10 @@ CREATE TABLE ROLES_NEGOCIO_APLICATIVOS(
     rol_neg_id int,
     app_id int,
     rol_id int,
+
+    FOREIGN KEY (app_id) references APLICATIVOS(app_id),
+    FOREIGN KEY (rol_id) references ROLES_APLICATIVOS(rol_id),
+    FOREIGN KEY (rol_neg_id) references ROLES_NEGOCIO(rol_neg_id)
 
 );
 
