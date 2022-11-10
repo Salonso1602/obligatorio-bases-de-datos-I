@@ -1,0 +1,12 @@
+.headers{
+    background-color: rgba(0, 139, 139, 0.50);
+}
+.values{
+    background-color: aliceblue;
+}
+.row{
+    text-align: center;
+}
+.col.button{
+    background-color: darkolivegreen;
+}

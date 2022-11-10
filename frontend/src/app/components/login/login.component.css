@@ -1,0 +1,21 @@
+#email{
+    width: 100%;
+    max-width: 500px;
+}
+#password{
+    width: 80%;
+    max-width: 400px;
+}
+#seePassword{
+    width: 20%;
+    max-width: 100px;
+    outline-style: auto;
+}
+#seePassword:checked{
+    background-color: red;
+}
+svg{
+    width: 2em;
+    height: 2em;
+    fill: currentColor;
+}

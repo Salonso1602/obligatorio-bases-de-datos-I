@@ -1,17 +1,13 @@
 var express = require('express');
+const permisosBL = require('../logic/permisosBL');
 var router = express.Router();
-const db = require('../db/conn');
 
-
-router.get('/', function(req, res, next) {
-
-    const sqlQuery = 'SELECT * FROM Faculties';
-
-    queryResult = db.database.query(sqlQuery, (err, result) => {
-    if (err) throw err;
-    });
-
-    res.send(queryResult);
+router.get('/', async function(req, res, next) {
+    const permisos = await permisosBL.obtenerTodosLosPermisos();
+    if (permisos){
+        res.status(404).send("not found");
+    }
+    res.status(200).send(permisos);
 });
 
 module.exports = router;

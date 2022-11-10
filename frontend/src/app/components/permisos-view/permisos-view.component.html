@@ -1,0 +1,19 @@
+<h2>Solicitudes de permisos</h2>
+<div class = 'container'>
+    <div class="row">
+        <div class="col headers" *ngFor="let field of this.fields">
+            <strong>{{field}}</strong>
+        </div>
+        <div class="col button">
+            <strong>ACCIONES</strong>
+        </div>
+    </div>
+    <div class="row" *ngFor="let request of this.allPermisosReqs">
+        <div class="col values" *ngFor="let field of getValues(request)">
+            <strong>{{field}}</strong>
+        </div>
+        <div class="col button">
+            <button class="btn btn-sm btn-primary" (click)="approveRequest(request)">Autorizar</button>
+        </div>
+    </div>
+</div>
