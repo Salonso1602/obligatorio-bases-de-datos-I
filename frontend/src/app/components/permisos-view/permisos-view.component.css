@@ -7,7 +7,6 @@
 .row{
     text-align: center;
 }
-button{
-    width: 100%;
-    height: 100%;
+.col.button{
+    background-color: darkolivegreen;
 }

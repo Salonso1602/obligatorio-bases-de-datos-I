@@ -5,12 +5,15 @@
             <strong>{{field}}</strong>
         </div>
         <div class="col button">
-            <button class="btn btn-sm btn-primary">Autorizar</button>
+            <strong>ACCIONES</strong>
         </div>
     </div>
-    <div class="row">
-        <div class="col values" *ngFor="let field of this.fields">
+    <div class="row" *ngFor="let request of this.allPermisosReqs">
+        <div class="col values" *ngFor="let field of getValues(request)">
             <strong>{{field}}</strong>
+        </div>
+        <div class="col button">
+            <button class="btn btn-sm btn-primary">Autorizar</button>
         </div>
     </div>
 </div>
