@@ -9,8 +9,23 @@
         </div>
     </div>
     <div class="row" *ngFor="let request of this.allPermisosReqs">
-        <div class="col values" *ngFor="let field of getValues(request)">
-            <strong>{{field}}</strong>
+        <div class="col values">
+            <p>{{request.user.apellidos}}</p>
+        </div>
+        <div class="col values">
+            <p>{{request.app.nombreapp}}</p>
+        </div>
+        <div class="col values">
+            <p>{{request.rolNeg.descripcion_rol_neg}}</p>
+        </div>
+        <div class="col values">
+            <p>{{request.fechaSolicitud}}</p>
+        </div>
+        <div class="col values">
+            <p>{{request.fechaAutorizacion}}</p>
+        </div>
+        <div class="col values">
+            <p>{{request.estado}}</p>
         </div>
         <div class="col button">
             <button class="btn btn-sm btn-primary" (click)="approveRequest(request)">Autorizar</button>

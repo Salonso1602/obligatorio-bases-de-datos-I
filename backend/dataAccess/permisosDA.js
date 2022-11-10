@@ -2,6 +2,7 @@ const db = require('../db/conn');
 const pool = db.pool;
 
 async function getAll() {
+    let queryResult;
     try{
         const query = `
         SELECT 
@@ -15,14 +16,14 @@ async function getAll() {
         JOIN ROLES_NEGOCIO ON PERMISOS.rol_neg_id = ROLES_NEGOCIO.rol_neg_id;
         `;
 
-        const queryResult = await pool.query(query);
-        console.log(queryResult);
-        return queryResult[0];
+        queryResult = await pool.query(query);
+        
     } 
     catch (err) {
         console.error(err);
         throw err;
     }
+    return queryResult[0];
 }
 
 module.exports = {

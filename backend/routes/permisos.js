@@ -4,8 +4,9 @@ var router = express.Router();
 
 router.get('/', async function(req, res, next) {
     const permisos = await permisosBL.obtenerTodosLosPermisos();
-    if (permisos){
+    if (!permisos){
         res.status(404).send("not found");
+        return;
     }
     res.status(200).send(permisos);
 });

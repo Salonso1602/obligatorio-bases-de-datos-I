@@ -3,6 +3,5 @@ import { IRol } from "./iRol"
 
 export interface IRolNeg{
     id : number,
-    app : IApp,
-    rol : IRol
+    descripcion_rol_neg : string
 }

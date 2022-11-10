@@ -3,7 +3,7 @@ const mysql = require('mysql2/promise');
 const pool = mysql.createPool({
     host: "localhost",
     database: "entregaIntermedia",
-    user: "admin",
+    user: "root",
     password: "admin",
     port: "3306",
     multipleStatements: true

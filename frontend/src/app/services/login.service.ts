@@ -8,11 +8,12 @@ import { environment } from 'src/environments/environment';
 })
 
 export class LoginService {
-  constructor(http : HttpClient) { }
+  constructor(private http : HttpClient) { }
 
   authUser(email : string, password : string) : Observable<boolean>{
-    return of(true);
+    return of(true)
+    //return this.http.post<boolean>(url, {email : email, password : password});
   }
 }
 
-const url = environment.backend_url+'login/';
+const url = environment.backend_url+'/login';

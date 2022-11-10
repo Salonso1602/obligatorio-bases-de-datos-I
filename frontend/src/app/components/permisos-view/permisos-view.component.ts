@@ -15,6 +15,7 @@ export class PermisosViewComponent implements OnInit {
   constructor(private permisoService : PermisosService) { }
 
   ngOnInit(): void {
+    this.getRequests()
   }
 
   getValues(obj : Object){

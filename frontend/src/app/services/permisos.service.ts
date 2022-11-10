@@ -20,4 +20,4 @@ export class PermisosService {
   }
 }
 
-const url = environment.backend_url+'permisos/';
+const url = environment.backend_url+'/permisos';
