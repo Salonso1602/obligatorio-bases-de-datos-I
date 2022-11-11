@@ -8,6 +8,7 @@ router.post('/', async function(req, res, next) {
 
     const esUsuario = await autenticacionDA.esUsuarioValido(user_id, password);
 
+    console.log("esusuario", esUsuario);
     if(esUsuario === false){
         res.status(401).send({"result": false});
     }

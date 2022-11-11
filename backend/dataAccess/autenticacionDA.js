@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 
 async function esUsuarioValido(user_id,password) {
     let queryResult;
-    const hashpwd = password;
     try{
         const query = `
         SELECT PERSONAS.hashpwd FROM PERSONAS WHERE PERSONAS.user_id = "${user_id}";
@@ -22,12 +21,11 @@ async function esUsuarioValido(user_id,password) {
         return false;
     }
     else{
-        if (queryResult[0][0].hashpwd != hashpwd){
-            //Las contraseñas no coinciden
-            return false;
-        }
-        //todo ok
-        return true;
+        bcrypt.compare(password, queryResult[0][0].hashpwd , function(err, result) {
+            console.log(typeof result);
+            console.log(result);
+            return result;
+        });
     }
 }
 
