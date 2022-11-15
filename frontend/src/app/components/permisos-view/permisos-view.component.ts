@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { estadosPermiso } from 'src/app/enums/estadosPermisos';
 import { IPermiso, IPermisoFields } from 'src/app/interfaces/iPermiso';
 import { PermisosService } from 'src/app/services/permisos.service';
 
@@ -11,15 +12,12 @@ export class PermisosViewComponent implements OnInit {
 
   allPermisosReqs? : IPermiso[];
   fields = IPermisoFields;
+  states = estadosPermiso;
 
   constructor(private permisoService : PermisosService) { }
 
   ngOnInit(): void {
     this.getRequests()
-  }
-
-  getValues(obj : Object){
-    return Object.values(obj);
   }
 
   getRequests(){
@@ -28,18 +26,11 @@ export class PermisosViewComponent implements OnInit {
     })
   }
 
-  approveRequest(permiso : IPermiso){
-    this.permisoService.approveRequest(permiso).subscribe(()=> this.getRequests());
+  resolveRequest(permiso : IPermiso, newState : estadosPermiso){
+    this.permisoService.resolveRequest(permiso, newState).subscribe(()=> this.getRequests());
   }
 
-  buttonText(state : string){
-    switch (state){
-      case 'AUTORIZADO':
-        return 'Denegar';
-      case 'DENEGADO':
-        return 'Autorizar';
-      default:
-        return 'Pendiente';
-    }
+  isApproved(permiso : IPermiso) : boolean{
+    return permiso.estado === estadosPermiso.Autorizado;
   }
 }

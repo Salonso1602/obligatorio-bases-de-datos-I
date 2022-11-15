@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { estadosPermiso } from '../enums/estadosPermisos';
 import { IPermiso } from '../interfaces/iPermiso';
 
 @Injectable({
@@ -15,8 +16,8 @@ export class PermisosService {
     return this.http.get<IPermiso[]>(url);
   }
 
-  approveRequest(permiso : IPermiso) : Observable<any>{
-    return this.http.post(url, permiso);
+  resolveRequest(permiso : IPermiso, newState : estadosPermiso) : Observable<any>{
+    return this.http.post(url, {permiso : permiso, estadoNuevo : newState});
   }
 }
 
