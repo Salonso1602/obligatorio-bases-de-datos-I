@@ -6,7 +6,17 @@
 }
 .row{
     text-align: center;
+    padding: 0;
+}
+.col{
+    align-items: center;
+    padding: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 .col.button{
-    background-color: darkolivegreen;
+    background-color: rgb(167, 209, 95);
+}
+.col.buttonHeader{
+    background-color: rgb(119, 149, 67);
 }

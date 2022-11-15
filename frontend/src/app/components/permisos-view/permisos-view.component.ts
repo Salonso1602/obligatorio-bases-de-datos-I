@@ -32,4 +32,14 @@ export class PermisosViewComponent implements OnInit {
     this.permisoService.approveRequest(permiso).subscribe(()=> this.getRequests());
   }
 
+  buttonText(state : string){
+    switch (state){
+      case 'AUTORIZADO':
+        return 'Denegar';
+      case 'DENEGADO':
+        return 'Autorizar';
+      default:
+        return 'Pendiente';
+    }
+  }
 }

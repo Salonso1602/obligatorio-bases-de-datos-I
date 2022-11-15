@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
     this.lg.authUser(this.profileForm.value.email!, this.profileForm.value.password!).subscribe(authenticated => {
       if (!authenticated){
         this.triedLogin = true;
+        alert('meesss')
     } else{
       this.triedLogin = false;
-      alert("loggeado");
       //placeholder para hacer algo si loggea
       this.router.navigate(['/adminPermisos'])
     }})
