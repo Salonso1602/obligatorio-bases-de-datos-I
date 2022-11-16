@@ -3,7 +3,7 @@
 <div class="container">
     <span style="color: red;" *ngIf="triedLogin === true">Email o Contraseña Errónea</span>
     <form [formGroup]="profileForm">
-        <input id="email" type="text" formControlName="email" placeholder="Dirección de Correo Electrónico">
+        <input id="email" type="text" formControlName="email" placeholder="Cédula de Identidad">
         <div class="input-group">
             <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password"
                 placeholder="Contraseña">

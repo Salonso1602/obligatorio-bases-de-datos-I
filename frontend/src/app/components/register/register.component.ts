@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   showPassword = false;
   secQuestions : string[] = ['Hola soy goku'];
   profileForm = this.fb.group({
-    email: ['', Validators.compose([Validators.email, Validators.required])],
+    userid: ['', Validators.compose([Validators.minLength(7), Validators.maxLength(8), Validators.required])],
     password: ['', Validators.required],
     confirmPassword: ['', Validators.required]
   })
@@ -27,11 +27,7 @@ export class RegisterComponent implements OnInit {
   });
   questionsForm = this.fb.group({
     pregunta1: ['', Validators.required],
-    respuesta1: ['', Validators.required],
-    pregunta2: ['', Validators.required],
-    respuesta2: ['', Validators.required],
-    pregunta3: ['', Validators.required],
-    respuesta3: ['', Validators.required]
+    respuesta1: ['', Validators.required]
   })
 
   formControls = this.profileForm.controls;
@@ -72,8 +68,8 @@ export class RegisterComponent implements OnInit {
       result.comment += 'Datos Personales vacíos o erróneos\n'
       result.value = false;
     }
-    if(this.formControls.email.invalid){
-      result.comment += 'Correo Electrónico erróneo\n'
+    if(this.formControls.userid.invalid || this.rs.ValidateID(this.formControls.userid.value)){
+      result.comment += 'Cédula no válida\n'
       result.value = false;
     }
 

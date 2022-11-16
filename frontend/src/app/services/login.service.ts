@@ -10,9 +10,9 @@ import { environment } from 'src/environments/environment';
 export class LoginService {
   constructor(private http : HttpClient) { }
 
-  authUser(email : string, password : string) : Observable<boolean>{
+  authUser(userid : string, password : string) : Observable<boolean>{
     return of(true)
-    //return this.http.post<boolean>(url, {email : email, password : password});
+    //return this.http.post<boolean>(url, {userid : userid, password : password});
   }
 }
 
