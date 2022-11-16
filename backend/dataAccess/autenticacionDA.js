@@ -17,16 +17,15 @@ async function esUsuarioValido(user_id,password) {
 
     // No existe usuario con ese ID
     if(queryResult[0].length === 0){
-        console.log(queryResult)
         return false;
     }
     else{
-        bcrypt.compare(password, queryResult[0][0].hashpwd , function(err, result) {
-            console.log(typeof result);
-            console.log(result);
+        const result = bcrypt.compareSync(password, queryResult[0][0].hashpwd , function(err, result) {
             return result;
         });
+        return result;
     }
+
 }
 
 module.exports = {
