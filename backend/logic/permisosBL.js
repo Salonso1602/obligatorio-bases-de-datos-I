@@ -16,5 +16,9 @@ module.exports = {
             respuesta.push(permiso);
         });
         return respuesta;
+    },
+    modificarEstadoPermiso : async (permiso, estadoNuevo) => {
+        const respuesta = await permisosDA.setState(permiso.user.user_id, permiso.app.app_id, permiso.rolNeg.rol_neg_id, estadoNuevo);
+        return respuesta
     }
 }
