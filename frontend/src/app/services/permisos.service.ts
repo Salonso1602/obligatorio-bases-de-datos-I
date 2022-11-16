@@ -17,7 +17,7 @@ export class PermisosService {
   }
 
   resolveRequest(permiso : IPermiso, newState : estadosPermiso) : Observable<any>{
-    return this.http.post(url, {permiso : permiso, estadoNuevo : newState});
+    return this.http.post<any>(url, {permiso : permiso, estadoNuevo : newState});
   }
 }
 
