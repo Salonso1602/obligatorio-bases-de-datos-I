@@ -22,12 +22,12 @@ export class PermisosViewComponent implements OnInit {
 
   getRequests(){
     this.permisoService.getAllPermisoRequests().subscribe(reqs => {
-      this.allPermisosReqs = reqs
+      this.allPermisosReqs = reqs;
     })
   }
 
-  resolveRequest(permiso : IPermiso, newState : estadosPermiso){
-    this.permisoService.resolveRequest(permiso, newState).subscribe(()=> this.getRequests());
+  async resolveRequest(permiso : IPermiso, newState : estadosPermiso){
+    await this.permisoService.resolveRequest(permiso, newState).subscribe(() => this.getRequests());
   }
 
   isApproved(permiso : IPermiso) : boolean{

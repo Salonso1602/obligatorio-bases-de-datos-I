@@ -26,6 +26,27 @@ async function getAll() {
     return queryResult[0];
 }
 
+async function setState(user_id, app_id, rol_neg_id, newState){
+    let queryResult;
+    try {
+        const query = `
+        UPDATE PERMISOS
+        SET estado = '${newState}'
+        WHERE 
+            user_id = ${user_id} AND
+            app_id = ${app_id} AND
+            rol_neg_id = ${rol_neg_id}
+            
+        `;
+        queryResult = await pool.query(query);
+    }
+    catch (err){
+        throw err; }
+
+    return(queryResult);
+}
+
 module.exports = {
-    getAll
+    getAll,
+    setState
 }

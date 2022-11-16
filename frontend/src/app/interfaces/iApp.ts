@@ -1,4 +1,4 @@
 export interface IApp{
-    id : number,
+    app_id : number,
     nombreapp : string
 }
