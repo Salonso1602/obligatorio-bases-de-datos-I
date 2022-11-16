@@ -6,8 +6,8 @@
             <form [formGroup]="profileForm">
                 <div class="col-6">
                     <h3>Datos de Cuenta:</h3>
-                    <p>Dirección de Correo Electrónico:</p>
-                    <input id="email" type="text" formControlName="email" placeholder="Dirección de Correo Electrónico">
+                    <p>Cédula de Identidad:</p>
+                    <input id="email" type="text" formControlName="email" placeholder="Cédula de Identidad">
                     <p>Contraseña:</p>
                     <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password"
                         placeholder="Contraseña">
@@ -37,6 +37,7 @@
                     </div>
                 </div>
             </form>
+
             <div class="col-6">
                 <h3>Datos Personales:</h3>
                 <form [formGroup]="userForm">
@@ -52,10 +53,11 @@
                     <input formControlName="departamento">
                 </form>
             </div>
+            
         </div>
-        <h3>Preguntas de Recuperación:</h3>
+
+        <h3>Pregunta de Recuperación:</h3>
         <form [formGroup]="questionsForm">
-            <p>Pregunta de Seguridad 1:</p>
             <select name="pregunta1" id="pregunta1" formControlName="pregunta1">
                 <option value="">Elija una pregunta...</option>
                 <option type="text" *ngFor="let question of secQuestions" value="{{question}}"
@@ -63,28 +65,13 @@
             </select>
             <input id="respuesta1" formControlName="respuesta1"
                 *ngIf="questionsForm.controls.pregunta1.getRawValue() !== ''" placeholder="Respuesta">
-            <p>Pregunta de Seguridad 2:</p>
-            <select name="pregunta2" id="pregunta2" formControlName="pregunta2">
-                <option value="">Elija una pregunta...</option>
-                <option type="text" *ngFor="let question of secQuestions" value="{{question}}"
-                    (change)="questionsForm.controls.pregunta2.setValue(question)">{{question}}</option>
-            </select>
-            <input id="respuesta2" formControlName="respuesta2"
-                *ngIf="questionsForm.controls.pregunta2.getRawValue() !== ''" placeholder="Respuesta">
-
-            <p>Pregunta de Seguridad 3:</p>
-            <select name="pregunta3" id="pregunta3" formControlName="pregunta3">
-                <option value="">Elija una pregunta...</option>
-                <option type="text" *ngFor="let question of secQuestions" value="{{question}}"
-                    (change)="questionsForm.controls.pregunta3.setValue(question)">{{question}}</option>
-            </select>
-            <input id="respuesta3" formControlName="respuesta3"
-                *ngIf="questionsForm.controls.pregunta3.getRawValue() !== ''" placeholder="Respuesta">
         </form>
 
     </div>
+
     <div class="d-flex justify-content-end">
         <button type="submit" class="btn btn-primary" (click)="register()">
             Registrarme</button>
     </div>
+
 </div>
