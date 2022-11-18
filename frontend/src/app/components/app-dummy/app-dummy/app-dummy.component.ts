@@ -12,7 +12,6 @@ import { AppDummyService } from 'src/app/services/app-dummy.service';
 export class AppDummyComponent implements OnInit {
 
   user !: IUser;
-  aplicativos !: IApp[];
   permisos !: IPermiso[];
 
   constructor(private appDummyService : AppDummyService) { }
