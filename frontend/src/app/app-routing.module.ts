@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppDummyComponent } from './components/app-dummy/app-dummy/app-dummy.component';
 import { LoginComponent } from './components/login/login.component';
 import { PermisosViewComponent } from './components/permisos-view/permisos-view.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -12,7 +13,10 @@ const routes: Routes = [
 },
 {
   path: 'login',
-  component: LoginComponent
+  component: LoginComponent,
+  children: [
+    {path:'dummy',component: AppDummyComponent}
+  ]
 },
 {
   path: 'register',

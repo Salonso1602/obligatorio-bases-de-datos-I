@@ -1,0 +1,16 @@
+<h2>App-Dummy</h2>
+<div class="container">
+    <div class="row">
+        <div class="col headers">
+            <span class="header-span">Aplicativos</span>
+        </div>
+        <div class="col headers">
+            <span class="header-span">Permisos</span>
+        </div>
+    </div>
+    <div class="row" *ngFor="let permiso of permisos">
+        <div class="col">
+            {{permiso.app.nombreapp}}
+        </div>
+    </div>
+</div>
