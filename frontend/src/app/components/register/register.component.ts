@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { IPreguntas } from 'src/app/interfaces/iPreguntas';
 import { RegisterService } from 'src/app/services/register.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class RegisterComponent implements OnInit {
   constructor(private fb : FormBuilder, private rs : RegisterService) { }
 
   showPassword = false;
-  secQuestions : string[] = ['Hola soy goku'];
+  secQuestions? : IPreguntas[]
+
   profileForm = this.fb.group({
     userid: ['', Validators.compose([Validators.minLength(7), Validators.maxLength(8), Validators.required])],
     password: ['', Validators.required],
@@ -46,12 +48,35 @@ export class RegisterComponent implements OnInit {
     if(chk.value === false){
       alert(chk.comment);
     } else{
-      alert('done')
+      console.log(this.profileForm.value);
+      console.log(this.userForm.value);
+      console.log(this.questionsForm.value);
+      console.log(JSON.stringify(this.questionsForm.get('pregunta1')?.value));
+      const respuesta = {
+        user_id : this.profileForm.get('userid')?.value,
+        password : this.profileForm.get('password')?.value,
+        nombres : this.userForm.get('nombres')?.value,
+        apellidos : this.userForm.get('apellidos')?.value,
+        direccion : this.userForm.get('direccion')?.value,
+        ciudad : this.userForm.get('ciudad')?.value,
+        departamento : this.userForm.get('departamento')?.value,
+        preg_id : this.questionsForm.get('pregunta1')?.value,
+        respuesta : this.questionsForm.get('respuesta1')?.value,
+      };
+      console.log(respuesta);
+      /*this.rs.registerUser(respuesta).subscribe(bool => {
+        if(bool){
+          alert('Registrado correctamente.')
+        }
+        else{
+          alert('Registrado erróneamente.')
+        }
+      });*/
     }
   }
 
   getSecQuestions(){
-    //this.sq.getAllQuestions().subscribe(questions => this.secQuestions = questions);
+    this.rs.getAllQuestions().subscribe(questions => this.secQuestions = questions);
   }
 
   formIsValid() : {value : boolean, comment : string}{
@@ -68,7 +93,8 @@ export class RegisterComponent implements OnInit {
       result.comment += 'Datos Personales vacíos o erróneos\n'
       result.value = false;
     }
-    if(this.formControls.userid.invalid || this.rs.ValidateID(this.formControls.userid.value)){
+    if(this.formControls.userid.invalid || !this.rs.ValidateID(this.profileForm.get('userid')?.value)){
+      console.log(this.rs.ValidateID(this.formControls.userid.value))
       result.comment += 'Cédula no válida\n'
       result.value = false;
     }

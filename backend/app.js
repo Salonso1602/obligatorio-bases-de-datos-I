@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const permisosRouter = require('./routes/permisos');
+const registrarRouter = require('./routes/registrar');
 const autenticacionRouter = require('./routes/autenticacion');
 
 var app = express();
@@ -35,6 +36,7 @@ app.use(function (req, res, next) {
 
 app.use('/api/v1/permisos', permisosRouter);
 app.use('/api/v1/autenticacion', autenticacionRouter);
+app.use('/api/v1/registrar', registrarRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
