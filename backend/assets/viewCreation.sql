@@ -1,19 +1,36 @@
-CREATE VIEW menusDisponiblesParaPersona AS
-SELECT user_id, nombreapp, descripcion_menu
-FROM 
-		(SELECT user_id, app_id, estado FROM PERMISOS WHERE estado ='AUTORIZADO') perms
-		INNER JOIN
-		(SELECT * FROM ROLES_NEGOCIO_APLICATIVOS) rols_negs
-		ON rols_negs.app_id = perms.app_id AND rols_negs.rol_neg_id = perms.rol_neg_id
+CREATE OR REPLACE VIEW permisosSolicitados AS
+SELECT
+  PERMISOS.*,
+  nombres,
+  apellidos,
+  direccion,
+  ciudad,
+  departamento,
+  nombreapp,
+  descripcion_rol_neg
+FROM
+  PERMISOS
+  INNER JOIN PERSONAS ON PERSONAS.user_id = PERMISOS.user_id
+  INNER JOIN APLICATIVOS ON PERMISOS.app_id = APLICATIVOS.app_id
+  INNER JOIN ROLES_NEGOCIO ON PERMISOS.rol_neg_id = ROLES_NEGOCIO.rol_neg_id
 
-        INNER JOIN
-        (SELECT * FROM ROLES_APLICATIVOS_MENU) rol_menus
-        ON rols_negs.app_id =  rol_menus.app_id AND rols_negs.rol_id =  rol_menus.rol_id
+--worked--
+CREATE
+OR REPLACE VIEW menusDisponiblesParaPersona AS
+SELECT
+  user_id,
+  nombreapp,
+  descripcion_menu
+FROM
+  PERMISOS
+  INNER JOIN ROLES_NEGOCIO_APLICATIVOS ON PERMISOS.app_id = ROLES_NEGOCIO_APLICATIVOS.app_id
+  AND PERMISOS.rol_neg_id = ROLES_NEGOCIO_APLICATIVOS.rol_neg_id
+  INNER JOIN ROLES_APLICATIVOS_MENU ON PERMISOS.app_id = ROLES_APLICATIVOS_MENU.app_id
+  AND ROLES_NEGOCIO_APLICATIVOS.rol_id = ROLES_APLICATIVOS_MENU.rol_id
+  INNER JOIN APLICATIVOS_MENU ON ROLES_APLICATIVOS_MENU.menu_id = APLICATIVOS_MENU.menu_id
+  INNER JOIN APLICATIVOS ON ROLES_APLICATIVOS_MENU.app_id = APLICATIVOS.app_id
+WHERE
+  estado = 'AUTORIZADO'
 
-        INNER JOIN
-        (SELECT * FROM APLICATIVOS_MENU) app_menus
-        ON rol_menus.menu_id = app_menus.menu_id
 
-        INNER JOIN
-        (SELECT * FROM APLICATIVOS) apps
-        ON apps.app_id = perms.app_id
+

@@ -19,9 +19,8 @@ async function getAppsAndMenusForUser(user_id) {
         return undefined;
     }
     else{
-        return queryResult;
+        return queryResult[0];
     }
-
 }
 
 module.exports = {
