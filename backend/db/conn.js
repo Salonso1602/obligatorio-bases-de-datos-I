@@ -1,11 +1,11 @@
 const mysql = require('mysql2/promise');
 
 const pool = mysql.createPool({
-    host: "localhost",
+    host: process.env.Hostname ? process.env.Hostname :  'localhost',
     database: "entregaIntermedia",
-    user: "root",
-    password: "admin",
-    port: "3306",
+    user: process.env.Database_user ? process.env.Database_user :  'root',
+    password: process.env.Database_password ? process.env.Database_password :  'admin',
+    port: process.env.Port_number ? process.env.Port_number :  '3306',
     multipleStatements: true
 })
 
