@@ -13,7 +13,6 @@ router.get('/', async function(req, res, next) {
 });
 
 router.post('/', async function(req,res,next){
-    console.log(req.body);
     const registrarUsuario = await registrosDA.insertUser(
         req.body.user_id,
         req.body.nombres,
@@ -25,7 +24,7 @@ router.post('/', async function(req,res,next){
     );
     const registrarPreguntaUsuario = await registrosDA.insertUserQuestion(
         req.body.user_id,
-        Number.parseInt(req.body.preg_id),
+        req.body.preg_id,
         req.body.respuesta
     );
     if(registrarUsuario && registrarPreguntaUsuario){

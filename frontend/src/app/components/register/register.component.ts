@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     departamento: ['', Validators.required]
   });
   questionsForm = this.fb.group({
-    pregunta1: ['', Validators.required],
+    pregunta1: [0, Validators.required],
     respuesta1: ['', Validators.required]
   })
 
@@ -48,10 +48,6 @@ export class RegisterComponent implements OnInit {
     if(chk.value === false){
       alert(chk.comment);
     } else{
-      console.log(this.profileForm.value);
-      console.log(this.userForm.value);
-      console.log(this.questionsForm.value);
-      console.log(JSON.stringify(this.questionsForm.get('pregunta1')?.value));
       const respuesta = {
         user_id : this.profileForm.get('userid')?.value,
         password : this.profileForm.get('password')?.value,
@@ -63,15 +59,14 @@ export class RegisterComponent implements OnInit {
         preg_id : this.questionsForm.get('pregunta1')?.value,
         respuesta : this.questionsForm.get('respuesta1')?.value,
       };
-      console.log(respuesta);
-      /*this.rs.registerUser(respuesta).subscribe(bool => {
+      this.rs.registerUser(respuesta).subscribe(bool => {
         if(bool){
           alert('Registrado correctamente.')
         }
         else{
           alert('Registrado erróneamente.')
         }
-      });*/
+      });
     }
   }
 

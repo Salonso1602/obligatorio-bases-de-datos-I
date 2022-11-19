@@ -17,12 +17,7 @@ async function getAllQuestions(){
 
 async function insertUser(user_id,nombres,apellidos,direccion,ciudad,departamento,password){
     let queryResult;
-    let hashpwd;
-    bcrypt.genSalt(10, function(err, salt){
-        bcrypt.hash(password,salt, function(err,hash){
-            hashpwd = hash;
-        });
-    });
+    let hashpwd = await bcrypt.hash(password, 10)
     try{
         const query = {
             sql: `INSERT INTO PERSONAS (user_id,nombres,apellidos,direccion,ciudad,departamento,hashpwd)
@@ -40,12 +35,7 @@ async function insertUser(user_id,nombres,apellidos,direccion,ciudad,departament
 
 async function insertUserQuestion(user_id,preg_id,respuesta){
     let queryResult;
-    let hashrespuesta;
-    bcrypt.genSalt(10, function(err, salt){
-        bcrypt.hash(respuesta,salt, function(err,hash){
-            hashrespuesta = hash;
-        });
-    });
+    let hashrespuesta = await bcrypt.hash(respuesta, 10)
     try{
         const query = {
             sql: `INSERT INTO PERSONAS_PREGUNTAS (user_id,preg_id,respuesta)
