@@ -13,6 +13,8 @@ import { AppDummyService } from 'src/app/services/app-dummy.service';
 export class AppDummyComponent implements OnInit {
 
   user !: IUser;
+  mostrar = false;
+  aplicativoSeleccionado!: string;
   aplicativos : IAppDummyItem[] = [
     {
       user_id : "11111",
@@ -22,17 +24,17 @@ export class AppDummyComponent implements OnInit {
     {
       user_id : "11111",
       nombreapp : "algo",
-      descripcion_menu : ["apagar fuego","rescatar gatos","prender fuego"]
+      descripcion_menu : ["apagar fuego","rescatar gatos"]
     },
     {
       user_id : "11111",
       nombreapp : "otro mas",
-      descripcion_menu : ["apagar fuego","rescatar gatos","prender fuego"]
+      descripcion_menu : ["apagar fuego","rescatar gatos","fire fire fuego"]
     },
     {
       user_id : "11111",
       nombreapp : "frutilla",
-      descripcion_menu : ["apagar fuego","rescatar gatos","prender fuego"]
+      descripcion_menu : ["apagar fuego","rescatar gatos","this fuego"]
     },
   ];
 
@@ -52,7 +54,15 @@ export class AppDummyComponent implements OnInit {
   }
 
   mostrarMenu(aplicativoSelect : string) {
-    alert(aplicativoSelect);
+    this.aplicativoSeleccionado = "para " + aplicativoSelect;
+    this.aplicativos.forEach(
+      aplicatvio => {
+        if(aplicatvio.nombreapp === aplicativoSelect) {
+          this.menus = aplicatvio.descripcion_menu;
+        }
+      }
+    )
+    console.log(this.menus)
   }
 }
 
