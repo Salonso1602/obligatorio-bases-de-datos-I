@@ -18,4 +18,4 @@ export class AppDummyService {
 
 }
 
-const url = "url";
+const url = "http://localhost:3000/api/v1/dummy";

@@ -16,7 +16,7 @@ export class AppDummyComponent implements OnInit {
   mostrar = false;
   aplicativoSeleccionado!: string;
   aplicativos : IAppDummyItem[] = [
-    {
+    /*{
       user_id : "11111",
       nombreapp : "bombero",
       descripcion_menu : ["apagar fuego","rescatar gatos","prender fuego"]
@@ -35,7 +35,7 @@ export class AppDummyComponent implements OnInit {
       user_id : "11111",
       nombreapp : "frutilla",
       descripcion_menu : ["apagar fuego","rescatar gatos","this fuego"]
-    },
+    }*/
   ];
 
   menus : string[] = [];
@@ -43,7 +43,7 @@ export class AppDummyComponent implements OnInit {
   constructor(private appDummyService : AppDummyService) { }
 
   ngOnInit(): void {
-    
+    this.obtenerPermisosActivousuarios("11111111");
   }
 
   obtenerPermisosActivousuarios(user_id : string) {
