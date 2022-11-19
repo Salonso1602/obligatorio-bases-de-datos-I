@@ -16,7 +16,7 @@ import { AppDummyComponent } from './components/app-dummy/app-dummy/app-dummy.co
     LoginComponent,
     PermisosViewComponent,
     RegisterComponent,
-    AppDummyComponent
+    AppDummyComponent,
   ],
   imports: [
     BrowserModule,

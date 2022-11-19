@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPermiso } from '../interfaces/iPermiso';
+import { IAppDummyItem } from '../interfaces/iAppDummyItem';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class AppDummyService {
   constructor(private http : HttpClient) { }
 
 
-  obtenerPermisosActivousuarios(user_id : string) : Observable<IPermiso[]> {
-    return this.http.post<IPermiso[]>(url, {user_id : user_id});
+  obtenerPermisosActivousuarios(user_id : string) : Observable<IAppDummyItem[]> {
+    return this.http.post<IAppDummyItem[]>(url, {user_id : user_id});
   }
 
 }

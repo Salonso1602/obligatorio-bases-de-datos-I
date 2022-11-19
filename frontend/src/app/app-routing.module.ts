@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppDummyComponent } from './components/app-dummy/app-dummy/app-dummy.component';
 import { LoginComponent } from './components/login/login.component';
@@ -14,9 +14,6 @@ const routes: Routes = [
 {
   path: 'login',
   component: LoginComponent,
-  children: [
-    {path:'dummy',component: AppDummyComponent}
-  ]
 },
 {
   path: 'register',
@@ -25,7 +22,12 @@ const routes: Routes = [
 {
   path: 'adminPermisos',
   component: PermisosViewComponent
-}];
+},
+{
+  path:"dummy",
+  component: AppDummyComponent
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
