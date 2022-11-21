@@ -8,6 +8,9 @@ import { environment } from 'src/environments/environment';
 })
 
 export class LoginService {
+
+  currentUserId! : string | undefined | null;
+
   constructor(private http : HttpClient) { }
 
   authUser(user_id : string, password : string) : Observable<boolean>{
