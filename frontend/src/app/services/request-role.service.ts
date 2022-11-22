@@ -16,6 +16,7 @@ export class RequestRoleService {
   getRolesByApp(app_id : number) : Observable<IRolNeg[]> {
     return this.http.get<IRolNeg[]>(url + '/' + app_id);
   }
+  
   getApps() : Observable<IApp[]> {
     return this.http.get<IApp[]>(url+'/appsDisponibles');
   }

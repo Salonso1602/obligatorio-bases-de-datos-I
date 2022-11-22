@@ -24,6 +24,12 @@ export class RequestRoleComponent implements OnInit {
 
   ngOnInit(): void {
     this.rrs.getApps().subscribe(apps => this.availableApps = apps);
+
+    this.reqForm.get('app')?.valueChanges.subscribe(id => {
+      if(id){
+      this.rrs.getRolesByApp(id).subscribe(roles => this.availableRoles = roles);
+    }
+    })
   }
 
   request(){
@@ -31,10 +37,5 @@ export class RequestRoleComponent implements OnInit {
       this.rrs.request(this.reqFormCtrls.app.value, this.reqFormCtrls.app.value)
       .subscribe();
     }
-  }
-  
-  async selectedApp(id : number){
-    this.reqForm.controls.app.setValue(id);
-    await this.rrs.getRolesByApp(id).subscribe(roles => this.availableRoles = roles);
   }
 }

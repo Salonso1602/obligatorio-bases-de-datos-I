@@ -2,17 +2,21 @@
 
 <p>Solicitar el Rol:</p>
 <div class="container form-floating" [formGroup]="reqForm">
-    <select name="appsDisponibles" id="select1" formControlName="apps" class="form-select form-select-lg">
-        
-        <option type="text" *ngFor="let app of availableApps" value="{{app.app_id}}"
-            (change)="selectedApp(app.app_id)">{{app.nombreapp}}</option>
+    <select name="appsDisponibles" id="select1" formControlName="app" class="form-select form-select-lg">
+        <option type="text" *ngFor="let app of availableApps" value="{{app.app_id}}">
+            {{app.nombreapp}}
+        </option>
     </select>
     <label for="select1">Elija un aplicativo</label>
-    <select name="rolesDisponibles" id="select2" formControlName="role" class="form-select form-select-lg" *ngIf="this.availableRoles.length > 0">
+
+</div>
+<div class="container form-floating" [formGroup]="reqForm" *ngIf="this.availableRoles.length > 0">
+    <select name="rolesDisponibles" id="select2" formControlName="role" class="form-select form-select-lg" >
         <option type="text" *ngFor="let role of availableRoles" value="{{role.rol_neg_id}}"
-            (change)="this.reqForm.controls.role.setValue(role.rol_neg_id)">{{role.descripcion_rol_neg}}</option>
+            (change)="this.reqForm.controls.role.setValue(role.rol_neg_id)">{{role.descripcion_rol_neg}}
+        </option>
     </select>
-    <label for="select2" *ngIf="this.availableRoles.length > 0">Elija un rol</label>
+    <label for="select2">Elija un rol</label>
 </div>
 
 <button class="btn btn-lg btn-primary" [disabled]="reqForm.invalid" (click)="request()">SOLICITAR</button>
