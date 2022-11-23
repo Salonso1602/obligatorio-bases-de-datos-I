@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     } else{
       this.triedLogin = false;
       //placeholder para hacer algo si loggea
-      this.router.navigate(['/adminPermisos'])
+      this.router.navigate(['/home'])
     }})
   }
 
