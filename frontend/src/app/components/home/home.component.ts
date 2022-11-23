@@ -16,12 +16,11 @@ export class HomeComponent implements OnInit {
 
   adminPermisosView(app_id : string, rol_neg_id: string){
     this.authMenu.authUser(app_id,rol_neg_id).subscribe(result => {
+      
       if(result){
         this.router.navigate(['/adminPermisos'])
       }
-      else{
-        alert("Falta autorización para acceder a este menú.")
-      }
+      alert("Falta autorización para acceder a este menú.")
     });
   }
 
