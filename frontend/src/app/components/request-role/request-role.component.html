@@ -19,4 +19,5 @@
     <label for="select2">Elija un rol</label>
 </div>
 
-<button class="btn btn-lg btn-primary" [disabled]="reqForm.invalid" (click)="request()">SOLICITAR</button>
+<span *ngIf="!chkLogin">Debe iniciar sesión para solicitar roles.</span>
+<button class="btn btn-lg btn-primary" [disabled]="!chkLogin" (click)="request()">SOLICITAR</button>

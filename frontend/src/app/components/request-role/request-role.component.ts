@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { IRolNeg } from 'src/app/interfaces/iRolNeg';
 import { IApp } from 'src/app/interfaces/iApp';
 import { RequestRoleService } from 'src/app/services/request-role.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-request-role',
@@ -20,7 +21,9 @@ export class RequestRoleComponent implements OnInit {
   })
   reqFormCtrls = this.reqForm.controls;
 
-  constructor(private rrs : RequestRoleService, private fb : FormBuilder) { }
+  constructor(private rrs : RequestRoleService, private fb : FormBuilder, private ls : LoginService) { }
+
+  chkLogin = this.ls.isLoggedIn();
 
   ngOnInit(): void {
     this.rrs.getApps().subscribe(apps => this.availableApps = apps);

@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
           this.triedLogin = true;
       } else{
         this.triedLogin = false;
-        this.lg.currentUserId = this.profileForm.value.email;
         this.router.navigate(['/adminPermisos']);
       }})
   }

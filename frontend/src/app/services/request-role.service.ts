@@ -13,6 +13,8 @@ export class RequestRoleService {
 
   constructor(private http : HttpClient, private usr : LoginService) { }
 
+  canRequest = this.usr.isLoggedIn();
+
   getRolesByApp(app_id : number) : Observable<IRolNeg[]> {
     return this.http.get<IRolNeg[]>(url + '/' + app_id);
   }
@@ -22,7 +24,7 @@ export class RequestRoleService {
   }
   
   request(app_id : number , rol_neg_id : number) : Observable<boolean>{
-    return this.http.post<boolean>(url + '/request', {user_id: this.usr.currentUserId, app_id : app_id, rol_neg_id : rol_neg_id, fechaSolicitud : new Date()});
+    return this.http.post<boolean>(url + '/request', {user_id: this.usr.getCurrentUserId(), app_id : app_id, rol_neg_id : rol_neg_id, fechaSolicitud : new Date()});
   }
 }
 
