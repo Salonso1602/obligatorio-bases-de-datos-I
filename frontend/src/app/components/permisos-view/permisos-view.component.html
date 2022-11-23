@@ -11,7 +11,7 @@
     </div>
     <div class="row" *ngFor="let request of this.allPermisosReqs">
         <div class="col values">
-            <p>{{request.user.apellidos}}</p>
+            <p>{{request.user.apellidos}} {{request.user.nombres}}</p>
         </div>
         <div class="col values">
             <p>{{request.app.nombreapp}}</p>
@@ -20,10 +20,10 @@
             <p>{{request.rolNeg.descripcion_rol_neg}}</p>
         </div>
         <div class="col values">
-            <p>{{request.fechaSolicitud | date : 'M/d/yy, h:mm a' : 'GMT-3'}}</p>
+            <p>{{request.fechaSolicitud | date : 'M/d/yy' : 'GMT-3'}}</p>
         </div>
         <div class="col values">
-            <p>{{request.fechaAutorizacion | date : 'M/d/yy, h:mm a' : 'GMT-3'}}</p>
+            <p>{{request.fechaAutorizacion | date : 'M/d/yy' : 'GMT-3'}}</p>
         </div>
         <div class="col values">
             <p>{{request.estado}}</p>
