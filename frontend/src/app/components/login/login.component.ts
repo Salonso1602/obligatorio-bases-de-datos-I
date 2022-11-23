@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   showPassword = false;
   triedLogin = false;
+  
   profileForm = this.fb.group({
     email: ['', Validators.required],
     password: ['', Validators.required]
@@ -26,15 +27,19 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.lg.authUser(this.profileForm.value.email!, this.profileForm.value.password!).subscribe(authenticated => {
-      if (!authenticated){
-        this.triedLogin = true;
-        alert('meesss')
-    } else{
-      this.triedLogin = false;
-      //placeholder para hacer algo si loggea
-      this.router.navigate(['/adminPermisos'])
-    }})
+    if(!this.profileForm.value.email || !this.profileForm.value.password){
+      this.triedLogin = true;
+      return;
+    }
+    else {
+      this.lg.authUser(this.profileForm.value.email!, this.profileForm.value.password!).subscribe(authenticated => {
+        if (!authenticated){
+          this.triedLogin = true;
+      } else{
+        this.triedLogin = false;
+        this.router.navigate(['/adminPermisos']);
+      }})
+  }
   }
 
   togglePasswordView(){
