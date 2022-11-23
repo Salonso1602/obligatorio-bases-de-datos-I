@@ -38,7 +38,28 @@ async function setState(user_id, app_id, rol_neg_id, newState) {
     return (queryResult);
 }
 
+async function createRequest(request) {
+    let queryResult;
+    try {
+        const query =
+        {
+        sql: `
+            INSERT INTO PERMISOS
+            VALUES (?,?,?,?,?,?)`,
+        values: [request.user, request.app, request.rolNeg, request.fechaSolicitud, null, request.estado]
+        }
+        queryResult = await pool.query(query);
+    }
+    catch (err) {
+        console.error('ON D.A.\n'+err)
+        throw err;
+    }
+
+    return (queryResult);
+}
+
 module.exports = {
     getAll,
-    setState
+    setState,
+    createRequest
 }

@@ -29,8 +29,8 @@
             <p>{{request.estado}}</p>
         </div>
         <div class="col button">
-            <button class="btn btn-sm btn-primary" (click)="resolveRequest(request, states.Autorizado)" [disabled]="isApproved(request)">APROBAR</button>
-            <button class="btn btn-sm btn-danger" (click)="resolveRequest(request, states.Denegado)" [disabled]="!isApproved(request)">DENEGAR</button>
+            <button class="btn btn-sm btn-primary" (click)="resolveRequest(request, states.Autorizado)" [disabled]="request.estado === states.Autorizado">APROBAR</button>
+            <button class="btn btn-sm btn-danger" (click)="resolveRequest(request, states.Denegado)" [disabled]="request.estado === states.Denegado">DENEGAR</button>
         </div>
         <div class="w-100"></div>
     </div>

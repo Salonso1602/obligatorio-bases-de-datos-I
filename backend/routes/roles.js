@@ -3,6 +3,7 @@ const Permiso = require('../entitities/Permiso');
 var router = express.Router();
 const appsBL = require('../logic/appsBL');
 const rolesBL = require('../logic/rolesBL');
+const permisosBL = require('../logic/permisosBL')
 
 router.get('/appsDisponibles', async function (req, res, next) {
     let apps;
@@ -35,11 +36,11 @@ router.get('/:app_id', async function (req, res, next) {
 });
 
 router.post('/request', async function (req, res, next) {
-    const request = new Permiso(req.body.user_id, req.body.app_id, req.body.rol_neg_id, req.body.fechaSolicitud, 'PENDING', 'PENDIENTE');
+    const request = new Permiso(req.headers.authorization, req.body.app_id, req.body.rol_neg_id, new Date(req.body.fechaSolicitud), null, 'PENDIENTE');
     let resp;
 
     try {
-        resp = await permisosBL.createRequest(request);
+        resp = await permisosBL.crearSolicitud(request);
     } catch (err) {
         res.sendStatus(500);
         return;
