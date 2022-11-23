@@ -17,4 +17,24 @@ router.post('/', async function(req, res, next) {
 
 });
 
+router.get('/menu', async function (req,res,next){
+    const user_id = req.header("authorization");
+    const app_id = req.query.app_id;
+    const rol_neg_id = req.query.rol_neg_id;
+
+    if(!user_id || !app_id || !rol_neg_id){
+        res.status(401).send({"result": false});
+        return;
+    }
+
+    const puedeEntrar = await autenticacionDA.usuarioPermitido(user_id,app_id,rol_neg_id);
+    console.log(puedeEntrar);
+    if(puedeEntrar == false){
+        res.status(401).send({"result": false})
+    }
+    else{
+        res.status(200).send({"result": true});
+    }
+})
+
 module.exports = router;

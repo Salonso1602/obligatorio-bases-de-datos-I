@@ -28,6 +28,36 @@ async function esUsuarioValido(user_id,password) {
 
 }
 
+async function usuarioPermitido(user_id, rol_neg_solicitado, app_id_solicitado){
+    let queryResult;
+    try{
+        const query = `SELECT PERMISOS.estado FROM PERMISOS WHERE 
+        PERMISOS.user_id = '${user_id}' AND
+        PERMISOS.app_id = ${app_id_solicitado} AND
+        PERMISOS.rol_neg_id = ${rol_neg_solicitado};
+        `
+        queryResult = await pool.query(query);
+    }
+    catch (err){
+        console.error(err);
+        throw err;
+    }
+
+    //No encuentra persona con ese permiso
+    if(queryResult[0].length===0){
+        return false;
+    }
+    // El estado del permiso es DENEGADO o PENDIENTE
+    else if(queryResult[0][0].estado !== 'AUTORIZADO'){
+        return false;
+    }
+    //El estado del permiso debe ser entonces AUTORIZADO
+    else{
+        return true;
+    }
+}
+
 module.exports = {
-    esUsuarioValido
+    esUsuarioValido,
+    usuarioPermitido
 }

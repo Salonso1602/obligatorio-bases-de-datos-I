@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthMenuService } from 'src/app/services/authMenu.service';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authMenu : AuthMenuService, private router : Router) { }
 
   ngOnInit(): void {
   }
 
-  adminPermisosView(){
-
+  adminPermisosView(app_id : string, rol_neg_id: string){
+    this.authMenu.authUser(app_id,rol_neg_id).subscribe(result => {
+      if(result){
+        this.router.navigate(['/adminPermisos'])
+      }
+      else{
+        alert("Falta autorización para acceder a este menú.")
+      }
+    });
   }
 
 }
