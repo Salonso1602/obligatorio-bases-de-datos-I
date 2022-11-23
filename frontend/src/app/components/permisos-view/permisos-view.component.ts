@@ -27,6 +27,6 @@ export class PermisosViewComponent implements OnInit {
   }
 
   async resolveRequest(permiso : IPermiso, newState : estadosPermiso){
-    await this.permisoService.resolveRequest(permiso, newState).subscribe(() => this.getRequests());
+    await this.permisoService.resolveRequest(permiso, newState, new Date()).subscribe(() => this.getRequests());
   }
 }

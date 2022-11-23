@@ -15,19 +15,19 @@ async function getAll() {
     return queryResult[0];
 }
 
-async function setState(user_id, app_id, rol_neg_id, newState) {
+async function setState(user_id, app_id, rol_neg_id, authDate, newState) {
     let queryResult;
     try {
         const query =
         {
         sql: `
             UPDATE PERMISOS
-            SET estado = ?
+            SET estado = ?, fecha_autorizacion = ?
             WHERE 
                 user_id = ? AND
                 app_id = ? AND
                 rol_neg_id = ?`,
-        values: [newState, user_id, app_id, rol_neg_id]
+        values: [newState, authDate, user_id, app_id, rol_neg_id]
         }
         queryResult = await pool.query(query);
     }
