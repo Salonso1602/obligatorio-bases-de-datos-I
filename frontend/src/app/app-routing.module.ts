@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PermisosViewComponent } from './components/permisos-view/permisos-view.component';
 import { RegisterComponent } from './components/register/register.component';
+import { RequestRoleComponent } from './components/request-role/request-role.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
 {
   path: 'adminPermisos',
   component: PermisosViewComponent
+},
+{
+  path: 'solicitarPermisos',
+  component: RequestRoleComponent
 }];
 
 @NgModule({

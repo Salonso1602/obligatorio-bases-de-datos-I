@@ -5,19 +5,8 @@ async function getAll() {
     let queryResult;
     try {
         const query = `
-        SELECT 
-        PERMISOS.*,
-        PERSONAS.nombres,PERSONAS.apellidos,PERSONAS.direccion, PERSONAS.ciudad, PERSONAS.departamento,
-        APLICATIVOS.nombreapp,
-        ROLES_NEGOCIO.descripcion_rol_neg
-        FROM PERMISOS
-        JOIN PERSONAS ON PERMISOS.user_id = PERSONAS.user_id
-        JOIN APLICATIVOS ON PERMISOS.app_id = APLICATIVOS.app_id 
-        JOIN ROLES_NEGOCIO ON PERMISOS.rol_neg_id = ROLES_NEGOCIO.rol_neg_id;
-        `;
-
+        SELECT * FROM permisosSolicitados`;
         queryResult = await pool.query(query);
-
     }
     catch (err) {
         console.error(err);
@@ -26,19 +15,19 @@ async function getAll() {
     return queryResult[0];
 }
 
-async function setState(user_id, app_id, rol_neg_id, newState) {
+async function setState(user_id, app_id, rol_neg_id, authDate, newState) {
     let queryResult;
     try {
         const query =
         {
         sql: `
             UPDATE PERMISOS
-            SET estado = ?
+            SET estado = ?, fecha_autorizacion = ?
             WHERE 
                 user_id = ? AND
                 app_id = ? AND
                 rol_neg_id = ?`,
-        values: [newState, user_id, app_id, rol_neg_id]
+        values: [newState, authDate, user_id, app_id, rol_neg_id]
         }
         queryResult = await pool.query(query);
     }
@@ -49,7 +38,28 @@ async function setState(user_id, app_id, rol_neg_id, newState) {
     return (queryResult);
 }
 
+async function createRequest(request) {
+    let queryResult;
+    try {
+        const query =
+        {
+        sql: `
+            INSERT INTO PERMISOS
+            VALUES (?,?,?,?,?,?)`,
+        values: [request.user, request.app, request.rolNeg, request.fechaSolicitud, null, request.estado]
+        }
+        queryResult = await pool.query(query);
+    }
+    catch (err) {
+        console.error('ON D.A.\n'+err)
+        throw err;
+    }
+
+    return (queryResult);
+}
+
 module.exports = {
     getAll,
-    setState
+    setState,
+    createRequest
 }
