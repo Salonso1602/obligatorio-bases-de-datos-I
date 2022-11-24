@@ -4,6 +4,7 @@ import { AppDummyComponent } from './components/app-dummy/app-dummy/app-dummy.co
 import { LoginComponent } from './components/login/login.component';
 import { PermisosViewComponent } from './components/permisos-view/permisos-view.component';
 import { RegisterComponent } from './components/register/register.component';
+import { RequestRoleComponent } from './components/request-role/request-role.component';
 
 const routes: Routes = [
   {
@@ -24,10 +25,14 @@ const routes: Routes = [
   component: PermisosViewComponent
 },
 {
+
   path:"dummy",
   component: AppDummyComponent
-}
-];
+},
+{
+  path: 'solicitarPermisos',
+  component: RequestRoleComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -7,7 +7,7 @@
                 <div class="col-6">
                     <h3>Datos de Cuenta:</h3>
                     <p>Cédula de Identidad:</p>
-                    <input id="email" type="text" formControlName="email" placeholder="Cédula de Identidad">
+                    <input id="userid" type="text" formControlName="userid" placeholder="Cédula de Identidad">
                     <p>Contraseña:</p>
                     <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password"
                         placeholder="Contraseña">
@@ -59,12 +59,12 @@
         <h3>Pregunta de Recuperación:</h3>
         <form [formGroup]="questionsForm">
             <select name="pregunta1" id="pregunta1" formControlName="pregunta1">
-                <option value="">Elija una pregunta...</option>
-                <option type="text" *ngFor="let question of secQuestions" value="{{question}}"
-                    (change)="questionsForm.controls.pregunta1.setValue(question)">{{question}}</option>
+                <option value=0>Elija una pregunta...</option>
+                <option type="text" *ngFor="let question of secQuestions" value="{{question.preg_id}}"
+                    (change)="questionsForm.controls.pregunta1.setValue(question.preg_id)">{{question.pregunta}}</option>
             </select>
             <input id="respuesta1" formControlName="respuesta1"
-                *ngIf="questionsForm.controls.pregunta1.getRawValue() !== ''" placeholder="Respuesta">
+                *ngIf="questionsForm.controls.pregunta1.getRawValue() !== 0" placeholder="Respuesta">
         </form>
 
     </div>

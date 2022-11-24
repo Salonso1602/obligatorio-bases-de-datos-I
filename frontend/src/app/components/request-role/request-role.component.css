@@ -1,0 +1,11 @@
+button{
+    margin: 3em;
+}
+select{
+    height: 100px !important;
+    margin-bottom: 1em;
+}
+span{
+    color: red;
+    font-style: italic;
+}

@@ -15,19 +15,19 @@ async function getAll() {
     return queryResult[0];
 }
 
-async function setState(user_id, app_id, rol_neg_id, newState) {
+async function setState(user_id, app_id, rol_neg_id, authDate, newState) {
     let queryResult;
     try {
         const query =
         {
         sql: `
             UPDATE PERMISOS
-            SET estado = ?
+            SET estado = ?, fecha_autorizacion = ?
             WHERE 
                 user_id = ? AND
                 app_id = ? AND
                 rol_neg_id = ?`,
-        values: [newState, user_id, app_id, rol_neg_id]
+        values: [newState, authDate, user_id, app_id, rol_neg_id]
         }
         queryResult = await pool.query(query);
     }
@@ -38,7 +38,28 @@ async function setState(user_id, app_id, rol_neg_id, newState) {
     return (queryResult);
 }
 
+async function createRequest(request) {
+    let queryResult;
+    try {
+        const query =
+        {
+        sql: `
+            INSERT INTO PERMISOS
+            VALUES (?,?,?,?,?,?)`,
+        values: [request.user, request.app, request.rolNeg, request.fechaSolicitud, null, request.estado]
+        }
+        queryResult = await pool.query(query);
+    }
+    catch (err) {
+        console.error('ON D.A.\n'+err)
+        throw err;
+    }
+
+    return (queryResult);
+}
+
 module.exports = {
     getAll,
-    setState
+    setState,
+    createRequest
 }
