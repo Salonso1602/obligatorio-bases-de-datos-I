@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { AppDummyComponent } from './components/app-dummy/app-dummy/app-dummy.component';
 import { LoginComponent } from './components/login/login.component';
 import { PermisosViewComponent } from './components/permisos-view/permisos-view.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
 },
 {
   path: 'login',
-  component: LoginComponent
+  component: LoginComponent,
 },
 {
   path: 'register',
@@ -27,6 +28,11 @@ const routes: Routes = [
 {
   path: 'adminPermisos',
   component: PermisosViewComponent
+},
+{
+
+  path:"dummy",
+  component: AppDummyComponent
 },
 {
   path: 'solicitarPermisos',

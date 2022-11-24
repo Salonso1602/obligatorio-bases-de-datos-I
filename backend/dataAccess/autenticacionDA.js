@@ -5,9 +5,10 @@ const bcrypt = require("bcrypt");
 async function esUsuarioValido(user_id,password) {
     let queryResult;
     try{
-        const query = `
-        SELECT PERSONAS.hashpwd FROM PERSONAS WHERE PERSONAS.user_id = "${user_id}";
-        `
+        const query = {
+            sql :`SELECT PERSONAS.hashpwd FROM PERSONAS WHERE PERSONAS.user_id = ?;`, 
+            values : [user_id]
+        }
         queryResult = await pool.query(query);
     } 
     catch (err) {
