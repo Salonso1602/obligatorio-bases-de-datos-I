@@ -15,28 +15,7 @@ export class AppDummyComponent implements OnInit {
   user !: IUser;
   mostrar = false;
   aplicativoSeleccionado!: string;
-  aplicativos : IAppDummyItem[] = [
-    /*{
-      user_id : "11111",
-      nombreapp : "bombero",
-      descripcion_menu : ["apagar fuego","rescatar gatos","prender fuego"]
-    },
-    {
-      user_id : "11111",
-      nombreapp : "algo",
-      descripcion_menu : ["apagar fuego","rescatar gatos"]
-    },
-    {
-      user_id : "11111",
-      nombreapp : "otro mas",
-      descripcion_menu : ["apagar fuego","rescatar gatos","fire fire fuego"]
-    },
-    {
-      user_id : "11111",
-      nombreapp : "frutilla",
-      descripcion_menu : ["apagar fuego","rescatar gatos","this fuego"]
-    }*/
-  ];
+  aplicativos : IAppDummyItem[] = [];
 
   menus : string[] = [];
 

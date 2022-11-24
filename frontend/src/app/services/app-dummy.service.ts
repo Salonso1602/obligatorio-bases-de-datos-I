@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IAppDummyItem } from '../interfaces/iAppDummyItem';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -18,4 +19,4 @@ export class AppDummyService {
 
 }
 
-const url = "http://localhost:3000/api/v1/dummy";
+const url = environment.backend_url+'/dummy';
