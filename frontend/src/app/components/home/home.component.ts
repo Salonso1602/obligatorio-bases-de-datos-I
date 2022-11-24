@@ -14,13 +14,30 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  adminPermisosView(app_id : string, rol_neg_id: string){
+  goToAdminPermisosView(app_id : string, rol_neg_id: string){
     this.authMenu.authUser(app_id,rol_neg_id).subscribe(result => {
       
       if(result){
         this.router.navigate(['/adminPermisos'])
       }
-      alert("Falta autorización para acceder a este menú.")
+      else{
+        alert("Falta autorización para acceder a este menú.")
+      }
+    });
+  }
+
+  goToDummyApp(){
+    this.router.navigate(['/dummy']);
+  }
+
+  goToRequestRole(app_id : string, rol_neg_id: string){
+    this.authMenu.authUser(app_id,rol_neg_id).subscribe(result =>{
+      if(result){
+        this.router.navigate(['/solicitarPermisos'])
+      }
+      else{
+        alert("Falta autorización para acceder a este menú.")
+      }
     });
   }
 
