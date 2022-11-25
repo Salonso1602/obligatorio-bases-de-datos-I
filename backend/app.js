@@ -11,6 +11,7 @@ const registrarRouter = require('./routes/registrar');
 const autenticacionRouter = require('./routes/autenticacion');
 const dummyRouter = require('./routes/dummy')
 const rolesRouter = require('./routes/roles')
+const recuperarContraseñaRouter = require('./routes/recuperarContraseña');
 
 var app = express();
 
@@ -43,6 +44,7 @@ app.use('/api/v1/autenticacion', autenticacionRouter);
 app.use('/api/v1/registrar', registrarRouter);
 app.use('/api/v1/dummy', dummyRouter);
 app.use('/api/v1/roles', rolesRouter);
+app.use('/api/v1/recuperarContrasena', recuperarContraseñaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
