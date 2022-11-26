@@ -16,7 +16,7 @@ const obtenerPreguntaUsuario = async (req, res) => {
         console.error(err);
         return res.status(500).json({
             success: false,
-            err: err
+            message: err
         });
     }
     console.log(queryResult)
@@ -30,7 +30,7 @@ const obtenerPreguntaUsuario = async (req, res) => {
 
     return res.status(200).json({
         success: true,
-        data: queryResult[0]
+        data: queryResult[0][0]
     })
 
 
@@ -96,7 +96,7 @@ const cambiarContraseña = async (req,res) => {
         console.error(err);
         return res.status(500).json({
             success: false,
-            err: err
+            message: err
         });
     }
     console.log(queryResult)
@@ -104,7 +104,7 @@ const cambiarContraseña = async (req,res) => {
     if(queryResult[0].length === 0){
         return res.status(400).json({
             success: false,
-            message: "no se encontro pregunta"
+            message: "no se encontro usuario"
         });
     }
     else{
