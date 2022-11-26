@@ -20,6 +20,11 @@ export class PermisosService {
     permiso.fechaAutorizacion = date;
     return this.http.post<any>(url, {permiso : permiso, estadoNuevo : newState});
   }
+
+  enterPermisosView(user_id : string){
+    
+  }
+  
 }
 
 const url = environment.backend_url+'/permisos';

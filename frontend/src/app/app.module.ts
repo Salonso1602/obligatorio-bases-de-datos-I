@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { PermisosViewComponent } from './components/permisos-view/permisos-view.component';
 import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
 import { AppDummyComponent } from './components/app-dummy/app-dummy/app-dummy.component';
 import { RequestRoleComponent } from './components/request-role/request-role.component';
 import { SessionPersistanceInterceptor } from './services/session-persistance.interceptor';
@@ -19,6 +20,7 @@ import { SessionPersistanceInterceptor } from './services/session-persistance.in
     LoginComponent,
     PermisosViewComponent,
     RegisterComponent,
+    HomeComponent,
     AppDummyComponent,
     RequestRoleComponent
   ],

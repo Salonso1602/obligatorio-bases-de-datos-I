@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IPreguntas } from 'src/app/interfaces/iPreguntas';
 import { RegisterService } from 'src/app/services/register.service';
 
@@ -10,7 +11,7 @@ import { RegisterService } from 'src/app/services/register.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private fb : FormBuilder, private rs : RegisterService) { }
+  constructor(private fb : FormBuilder, private rs : RegisterService, private router : Router) { }
 
   showPassword = false;
   secQuestions? : IPreguntas[]
@@ -62,6 +63,7 @@ export class RegisterComponent implements OnInit {
       this.rs.registerUser(respuesta).subscribe(bool => {
         if(bool){
           alert('Registrado correctamente.')
+          this.router.navigate(['/login']);
         }
         else{
           alert('Registrado erróneamente.')

@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           this.triedLogin = true;
       } else{
         this.triedLogin = false;
-        this.router.navigate(['/adminPermisos']);
+        this.router.navigate(['/home']);
       }})
   }
   }

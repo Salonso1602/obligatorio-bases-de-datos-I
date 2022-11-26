@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
 import { AppDummyComponent } from './components/app-dummy/app-dummy/app-dummy.component';
 import { LoginComponent } from './components/login/login.component';
 import { PermisosViewComponent } from './components/permisos-view/permisos-view.component';
@@ -19,6 +20,10 @@ const routes: Routes = [
 {
   path: 'register',
   component: RegisterComponent
+},
+{
+  path: 'home',
+  component: HomeComponent
 },
 {
   path: 'adminPermisos',
