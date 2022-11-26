@@ -7,6 +7,7 @@ import { PermisosViewComponent } from './components/permisos-view/permisos-view.
 import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/recuperar-contrasena.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RequestRoleComponent } from './components/request-role/request-role.component';
+import { LoginGuard } from './guards/login-guard.service';
 
 const routes: Routes = [
   {
@@ -24,19 +25,23 @@ const routes: Routes = [
 },
 {
   path: 'home',
+  canActivate: [LoginGuard],
   component: HomeComponent
 },
 {
   path: 'adminPermisos',
+  canActivate: [LoginGuard],
   component: PermisosViewComponent
 },
 {
 
   path:"dummy",
+  canActivate: [LoginGuard],
   component: AppDummyComponent
 },
 {
   path: 'solicitarPermisos',
+  canActivate: [LoginGuard],
   component: RequestRoleComponent
 },
 {
