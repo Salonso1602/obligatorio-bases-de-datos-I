@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 import { RecuperarContrasenaService } from 'src/app/services/recuperar-contrasena.service';
 
 @Component({
@@ -16,7 +17,9 @@ export class RecuperarContrasenaComponent implements OnInit {
   cambiarContrasena : boolean = false;
   user_id!: string;
 
-  constructor(private recuperarContrasena : RecuperarContrasenaService, private router : Router) { }
+  constructor(private recuperarContrasena : RecuperarContrasenaService, 
+              private router : Router,
+              private login : LoginService) { }
 
   ngOnInit(): void {
   }
@@ -57,6 +60,7 @@ export class RecuperarContrasenaComponent implements OnInit {
       this.recuperarContrasena.cambiarContrasena(this.user_id, contraseña)
       .subscribe(result => {
         alert("contraseña modificada")
+        this.login.logOut();
         this.router.navigate(['/login']);
       },
       err =>{

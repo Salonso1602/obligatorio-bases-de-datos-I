@@ -19,8 +19,8 @@
     </div>
 
     <div *ngIf="cambiarContrasena">
-        <input placeholder="Ingrese su nueva contraseña" class="form-control mb-3" #contrasena1>
-        <input placeholder="Repita su nueva contraseña" class="form-control mb-3" #contrasena2>
+        <input placeholder="Ingrese su nueva contraseña" type = "password" class="form-control mb-3" #contrasena1>
+        <input placeholder="Repita su nueva contraseña" type = "password" class="form-control mb-3" #contrasena2>
         <button class="btn btn-primary" (click)="cambioContrasena(contrasena1.value,contrasena2.value)">Enviar nueva contraseña</button>
     </div>
 </div>
