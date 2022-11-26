@@ -1,3 +1,13 @@
-<button type="button" class="btn btn-outline-dark" (click)="goToAdminPermisosView('3','3')">Administrar Permisos</button>
-<button type="button" class="btn btn-outline-dark" (click)="goToDummyApp()">Ir a la App Dummy</button>
-<button type="button" class="btn btn-outline-dark" (click)="goToRequestRole('3','3')">Solicitar Permiso</button>
+<div class="container">
+    <div class="row my-2">
+        <button type="button" class="btn btn-outline-dark btn-block" (click)="goToDummyApp()">Ir a la App Dummy</button>
+    </div>
+    <div *ngIf="Admin">
+        <div class="row my-2">
+            <button type="button" class="btn btn-outline-dark btn-block" (click)="goToAdminPermisosView('3','3')">Administrar Permisos</button>
+        </div>
+        <div class="row my-2">
+            <button type="button" class="btn btn-outline-dark btn-block" (click)="goToRequestRole('3','3')">Solicitar Permiso</button>
+        </div>
+    </div>  
+</div> 

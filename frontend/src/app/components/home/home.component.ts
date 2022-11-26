@@ -11,7 +11,22 @@ export class HomeComponent implements OnInit {
 
   constructor(private authMenu : AuthMenuService, private router : Router) { }
 
+  private isAdmin : boolean = false;
+
   ngOnInit(): void {
+    this.checkIfAdmin('3','3');
+  }
+
+  get Admin(){
+    return this.isAdmin;
+  }
+
+  checkIfAdmin(app_id : string, rol_neg_id : string){
+    this.authMenu.authUser(app_id,rol_neg_id).subscribe(result => {
+      if(result){
+        this.isAdmin = true;
+      }
+    });
   }
 
   goToAdminPermisosView(app_id : string, rol_neg_id: string){
