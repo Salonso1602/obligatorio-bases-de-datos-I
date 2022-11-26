@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AppDummyComponent } from './components/app-dummy/app-dummy/app-dummy.component';
 import { RequestRoleComponent } from './components/request-role/request-role.component';
 import { SessionPersistanceInterceptor } from './services/session-persistance.interceptor';
+import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/recuperar-contrasena.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SessionPersistanceInterceptor } from './services/session-persistance.in
     RegisterComponent,
     HomeComponent,
     AppDummyComponent,
-    RequestRoleComponent
+    RequestRoleComponent,
+    RecuperarContrasenaComponent
   ],
   imports: [
     BrowserModule,

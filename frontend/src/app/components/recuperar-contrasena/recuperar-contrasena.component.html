@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Recuperar contraseña</h1>
+
+    <div *ngIf="ingresoDeUsuario">
+        <p>A todos nos pasa de olvidarnos cosas, la contraseña puede ser una de ellas, por favor ingresa tu usario para poder ayudarte a recuperarla</p>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Ingrese su usuario" #usuario>
+            <button class="btn btn-outline-secondary" (click)="obtenerPreguntaUsuario(usuario.value)">Enviar</button>
+        </div>
+    </div>
+
+    <div *ngIf="responderPregunta">
+        <h5>Por favor responda la siguiente pregunta</h5>
+        <p>{{pregunta}}</p>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Ingrese su respuesta" #respuesta>
+            <button class="btn btn-outline-secondary" (click)="esRespuestaValida(respuesta.value)">Enviar</button>
+        </div>
+    </div>
+
+    <div *ngIf="cambiarContrasena">
+        <input placeholder="Ingrese su nueva contraseña" type = "password" class="form-control mb-3" #contrasena1>
+        <input placeholder="Repita su nueva contraseña" type = "password" class="form-control mb-3" #contrasena2>
+        <button class="btn btn-primary" (click)="cambioContrasena(contrasena1.value,contrasena2.value)">Enviar nueva contraseña</button>
+    </div>
+</div>
