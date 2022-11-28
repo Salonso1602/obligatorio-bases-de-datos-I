@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { RecuperarContrasenaService } from 'src/app/services/recuperar-contrasena.service';
 
@@ -12,13 +13,21 @@ export class CambiarContrasenaComponent implements OnInit {
   contrasenaValida = false;
 
   constructor(private recuperarContrasena : RecuperarContrasenaService,
-              private getUserId : LoginService) { }
+              private getUserId : LoginService,
+              private router : Router) { }
 
   ngOnInit(): void {
   }
 
+
   confirmarContrasena(contrasena : string) {
-    this.contrasenaValida = true;
+    const user_id = this.getUserId.getCurrentUserId();
+    if (user_id != null){
+      this.recuperarContrasena.comprobarSiContrasenaEsValida(user_id,contrasena)
+      .subscribe( (result) => {
+        this.contrasenaValida = result;
+      });
+    }
   }
 
   cambiarContrasena(c1 : string, c2: string) {
@@ -31,6 +40,7 @@ export class CambiarContrasenaComponent implements OnInit {
       .subscribe( (result) => {
         if(result.success){
           alert("contraseña cambiada");
+          this.router.navigate(['/home'])
         }
         else{
           alert("no se pudo cambiar la contraseña debido a un error interno");

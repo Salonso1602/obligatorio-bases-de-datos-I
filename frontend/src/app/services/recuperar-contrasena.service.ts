@@ -50,4 +50,9 @@ export class RecuperarContrasenaService {
     });
   }
 
+  comprobarSiContrasenaEsValida(user_id : string, password : string) : Observable<boolean>{
+    return this.http.post<boolean>(environment.backend_url+'/autenticacion', 
+      {user_id : user_id, password : password});
+  }
+
 }
