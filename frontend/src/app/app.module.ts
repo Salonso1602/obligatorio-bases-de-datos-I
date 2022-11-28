@@ -14,6 +14,7 @@ import { RequestRoleComponent } from './components/request-role/request-role.com
 import { SessionPersistanceInterceptor } from './services/session-persistance.interceptor';
 import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/recuperar-contrasena.component';
 import { LoginGuard } from './guards/login-guard.service';
+import { CambiarContrasenaComponent } from './components/cambiar-contrasena/cambiar-contrasena.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { LoginGuard } from './guards/login-guard.service';
     HomeComponent,
     AppDummyComponent,
     RequestRoleComponent,
-    RecuperarContrasenaComponent
+    RecuperarContrasenaComponent,
+    CambiarContrasenaComponent
   ],
   imports: [
     BrowserModule,

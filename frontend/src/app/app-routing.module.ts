@@ -8,6 +8,7 @@ import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/
 import { RegisterComponent } from './components/register/register.component';
 import { RequestRoleComponent } from './components/request-role/request-role.component';
 import { LoginGuard } from './guards/login-guard.service';
+import { CambiarContrasenaComponent } from './components/cambiar-contrasena/cambiar-contrasena.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,11 @@ const routes: Routes = [
   path: 'solicitarPermisos',
   canActivate: [LoginGuard],
   component: RequestRoleComponent
+},
+{
+  path: 'cambiarContrasena',
+  canActivate: [LoginGuard],
+  component: CambiarContrasenaComponent
 },
 {
   path: 'recuperarContrasena',
