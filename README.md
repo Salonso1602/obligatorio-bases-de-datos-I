@@ -29,4 +29,10 @@ Angular CLI: https://angular.io/guide/setup-local#install-the-angular-cli
 - `npm i`
 - `ng serve -o` (se abrira en el navegador con el dominio http://localhost:4200)
 
+(Ambas deben ser ejecutadas en terminales separadas)
+
+## MER:
+
+![](MER.jpg)
+
 
