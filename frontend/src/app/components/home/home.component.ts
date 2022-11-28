@@ -46,14 +46,7 @@ export class HomeComponent implements OnInit {
   }
 
   goToRequestRole(app_id : string, rol_neg_id: string){
-    this.authMenu.authUser(app_id,rol_neg_id).subscribe(result =>{
-      if(result){
-        this.router.navigate(['/solicitarPermisos'])
-      }
-      else{
-        alert("Falta autorización para acceder a este menú.")
-      }
-    });
+    this.router.navigate(['/solicitarPermisos'])
   }
 
 }
