@@ -1,0 +1,31 @@
+<div class = "container">
+
+        <div *ngIf="!contrasenaValida else nuevaContrasena">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Ingrese su Contraseña actual</label>
+                <input type="password" class="form-control" id="exampleFormControlInput1" 
+                placeholder="contraseña actual" #contrasenaActual>
+            </div>
+            <button class="btn btn-dark btn-block" (click)="confirmarContrasena(contrasenaActual.value)">
+                Confirmar contraseña
+            </button>
+        </div>
+
+        <ng-template #nuevaContrasena>
+            <form>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Ingrese su nueva Contraseña</label>
+                    <input type="password" class="form-control" id="exampleFormControlInput1" 
+                    placeholder="Ingrese su nueva Contraseña" #c1>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Repita su nueva contraseña</label>
+                    <input type="password" class="form-control" id="exampleFormControlInput1" 
+                    placeholder="Repita su nueva contraseña" #c2>
+                </div>
+            </form>
+            <button class="btn btn-dark btn-block" (click)="cambiarContrasena(c1.value,c2.value)">
+                Cambiar contraseña
+            </button>
+        </ng-template>
+</div>

@@ -34,10 +34,13 @@ export class RecuperarContrasenaService {
     }> (`${url}/${user_id}`,{respuesta: respuesta})
   }
 
-  cambiarContrasena(user_id: string, newPassword: string) :Observable<{
+  cambiarContrasena(user_id: string | null, newPassword: string) :Observable<{
     success : boolean,
     messsage : string
   }> {
+    if(user_id === null)
+      user_id = "1";
+
     return this.http.post<{
       success : boolean,
       messsage : string
@@ -45,6 +48,11 @@ export class RecuperarContrasenaService {
       user_id : user_id,
       newPassword : newPassword
     });
+  }
+
+  comprobarSiContrasenaEsValida(user_id : string, password : string) : Observable<boolean>{
+    return this.http.post<boolean>(environment.backend_url+'/autenticacion', 
+      {user_id : user_id, password : password});
   }
 
 }
