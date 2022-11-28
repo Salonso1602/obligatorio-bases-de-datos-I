@@ -49,4 +49,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/solicitarPermisos'])
   }
 
+  goToCambiarContrasena() {
+    this.router.navigate(['/cambiarContrasena']);
+  }
+
 }
