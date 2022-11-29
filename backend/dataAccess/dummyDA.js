@@ -5,7 +5,7 @@ async function getAppsAndMenusForUser(user_id) {
     let queryResult;
     try{
         const query = {
-            sql : ` SELECT * FROM menusDisponiblesParaPersona WHERE user_id = ? ; `,
+            sql : ` SELECT DISTINCT * FROM menusDisponiblesParaPersona WHERE user_id = ? ; `,
             values : [user_id]}
         queryResult = await pool.query(query);
     } 

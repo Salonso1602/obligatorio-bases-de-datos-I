@@ -7,7 +7,7 @@ async function getByAppId(id){
     try{
         const query = {
             sql :`
-            SELECT * FROM rolesNegocioConAplicativos WHERE app_id = ? `,
+            SELECT DISTINCT * FROM rolesNegocioConAplicativos WHERE app_id = ? `,
             values : [id]}
         queryResult = await pool.query(query);
     }catch (err){
