@@ -15,7 +15,7 @@ Angular CLI: https://angular.io/guide/setup-local#install-the-angular-cli
 - `git clone https://github.com/RafaFil/obligatorio-bases-de-datos-I.git` (o descargar el repositorio como .zip)
 - `cd obligatorio-base-de-datos-I`
 
-(Es importante que al momento de abrir la aplicacion, tanto backend como frontend esten ejecutandose a la vez, para una mayor facilidad, ambos proyectos se encuentran hosteados -se puede acceder al obligatorio sin necesidad de descargar el repositorio).
+(Es importante que al momento de abrir la aplicacion, tanto backend como frontend esten ejecutandose a la vez).
 
 #### Para ejecutar el backend:
 
@@ -31,8 +31,14 @@ Angular CLI: https://angular.io/guide/setup-local#install-the-angular-cli
 
 (Ambas deben ser ejecutadas en terminales separadas)
 
+## Que hay en la aplicación?
+
+- Un repositorio para la parte visual (frontend): https://github.com/RafaFil/obligatorio-bases-de-datos-I/tree/main/frontend
+
+- Un repositorio para las conexión y consultas a la base de datos (backend): https://github.com/RafaFil/obligatorio-bases-de-datos-I/tree/main/backend
+
+- Una carpeta de assets en donde se encuentran archivos sql utilizados para la creacion de tablas y vistas: https://github.com/RafaFil/obligatorio-bases-de-datos-I/tree/main/backend/assets  
+
 ## MER:
 
 ![](MER.jpg)
-
-
