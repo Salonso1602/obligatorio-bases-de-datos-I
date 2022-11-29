@@ -36,8 +36,8 @@ export class RequestRoleComponent implements OnInit {
   }
 
   request(){
-    if(this.reqFormCtrls.app.value && this.reqFormCtrls.app.value){
-      this.rrs.request(this.reqFormCtrls.app.value, this.reqFormCtrls.app.value)
+    if(this.reqFormCtrls.app.value && this.reqFormCtrls.role.value){
+      this.rrs.request(this.reqFormCtrls.app.value, this.reqFormCtrls.role.value)
       .subscribe();
     }
   }

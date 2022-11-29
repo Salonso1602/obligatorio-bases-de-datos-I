@@ -27,7 +27,7 @@ router.get('/menu', async function (req,res,next){
         return;
     }
 
-    const puedeEntrar = await autenticacionDA.usuarioPermitido(user_id,app_id,rol_neg_id);
+    const puedeEntrar = await autenticacionDA.usuarioPermitido(user_id,rol_neg_id,app_id);
 
     if(puedeEntrar == false){
         res.status(401).send({"result": false})

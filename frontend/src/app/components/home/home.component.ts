@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   private isAdmin : boolean = false;
 
   ngOnInit(): void {
-    this.checkIfAdmin('3','3');
+    this.checkIfAdmin('2','3');
   }
 
   get Admin(){
