@@ -41,7 +41,6 @@ export class AppDummyComponent implements OnInit {
         }
       }
     )
-    console.log(this.menus)
   }
 }
 
