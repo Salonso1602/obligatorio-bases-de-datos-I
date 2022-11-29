@@ -38,7 +38,15 @@ export class RequestRoleComponent implements OnInit {
   request(){
     if(this.reqFormCtrls.app.value && this.reqFormCtrls.role.value){
       this.rrs.request(this.reqFormCtrls.app.value, this.reqFormCtrls.role.value)
-      .subscribe();
+      .subscribe(resp => {
+        if(resp){
+          alert('Solicitud de Rol enviada');
+        } else if(resp === false){
+          alert('Ese aplicativo o Rol ya no existe');
+        } else{
+          alert('Error al enviar la solicitud');
+        }
+      });
     }
   }
 }

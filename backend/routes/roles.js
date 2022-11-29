@@ -42,14 +42,14 @@ router.post('/request', async function (req, res, next) {
     try {
         resp = await permisosBL.crearSolicitud(request);
     } catch (err) {
-        res.sendStatus(500);
+        res.status(500).json({result: null});
         return;
     }
     if (!resp) {
-        res.status(404).send("not found");
+        res.status(404).send({result: false});
         return;
     }
-    res.status(200).send();
+    res.status(201).json({result: true});
 })
 
 module.exports = router;
