@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,6 +13,9 @@ export class LoginService {
 
   authUser(user_id : string, password : string) : Observable<boolean>{
     return this.http.post<boolean>(url, {user_id : user_id, password : password}).pipe(
+      catchError (err => {
+        return of(false);
+      }),
       tap(res =>{ if(res){this.setSession(user_id)}})
     )
   }
