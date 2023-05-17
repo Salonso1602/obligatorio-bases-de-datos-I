@@ -1,7 +1,8 @@
 # obligatorio-bases-de-datos-I
-obligatorio de bases de datos
-La tarea fue realizada como webApp en donde se utilizo para frontend Angular, para backend NodeJs y para la base de datos MySQL
-
+Obligatorio de bases de datos
+Se plantea una aplicación de gestión de permisos de aplicaciones, donde un administrador puede conceder o rechazar solicitudes de usuarios a utilizar aplicativos. Los aplicativos son mockeados.
+La tarea fue realizada como WebApp en donde se utilizo para frontend Angular, para backend NodeJs y para la base de datos MySQL
+Fue un primer acercamiento a la construcción de una base de datos relacional de MySQL en un entorno de WebApp y su manejo eficiente.
 ## Requisitos:
 
 - Tener instalado NodeJs (16.17.0) y Angular CLI
